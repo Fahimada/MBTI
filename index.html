@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>آزمون MBTI | دیزاینر شو</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #fdfcfe;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .question {
+      margin-bottom: 2rem;
+    }
+    .question p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .scale {
+      display: flex;
+      justify-content: space-between;
+    }
+    .scale label {
+      text-align: center;
+      flex: 1;
+    }
+    .scale input[type="radio"] {
+      display: block;
+      margin: auto;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #824dff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .result {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>آزمون شخصیت شناسی MBTI</h1>
+  <form id="quizForm">
+    <div class="question" id="q1">
+      <p>شما مرتب دوستان جدیدی پیدا می‌کنید.</p>
+      <div class="scale">
+        <label><input type="radio" name="q1" value="E"> موافقم</label>
+        <label><input type="radio" name="q1" value="I"> مخالفم</label>
+      </div>
+    </div>
+    <!-- سوالات بیشتر به همین شکل اضافه خواهد شد -->
+
+    <button type="submit">مشاهده نتیجه</button>
+  </form>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let answers = {};
+      let formData = new FormData(this);
+
+      for (let [key, value] of formData.entries()) {
+        answers[value] = (answers[value] || 0) + 1;
+      }
+
+      // الگوریتم ساده برای تست اولیه: فقط بر اساس سوال اول
+      let type = (answers["E"] || 0) > (answers["I"] || 0) ? "E" : "I";
+      type += "NFJ"; // فقط برای تست، بعداً به‌صورت کامل محاسبه می‌شود
+
+      let link = `https://designer-sho.com/blog/Style-Test/${type}`;
+      document.getElementById("result").innerHTML = `
+        تیپ شخصیتی شما: <strong>${type}</strong><br>
+        <a href="${link}" target="_blank">مشاهده مقاله سبک‌شناسی مربوط به این تیپ</a>
+      `;
+    });
+  </script>
+</body>
+</html>
