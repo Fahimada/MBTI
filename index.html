@@ -4,18 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>آزمون MBTI | دیزاینر شو</title>
+  <title>پرسش‌نامه MBTI - دیزاینر شو</title>
   <style>
     body {
       font-family: IranYekan, sans-serif;
-      background-color: #fdfcfe;
-      color: #333;
+      background-color: #fcfcfc;
+      color: #222;
       max-width: 900px;
       margin: auto;
       padding: 2rem;
+      direction: rtl;
     }
     .question {
-      margin-bottom: 40px;
+      margin-bottom: 2.5rem;
     }
     .question p {
       font-weight: bold;
@@ -23,380 +24,153 @@
     }
     .scale {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       flex-wrap: wrap;
+      gap: 12px;
       margin-top: 10px;
     }
     .scale label {
+      width: 120px;
       text-align: center;
-      width: 100px;
       font-size: 14px;
     }
     button {
-      padding: 12px 24px;
+      margin-top: 30px;
+      padding: 10px 24px;
       font-size: 16px;
-      background-color: #7c3aed;
+      background-color: #824dff;
       color: white;
       border: none;
       border-radius: 8px;
       cursor: pointer;
     }
-    .result {
-      font-size: 20px;
-      text-align: center;
-      margin-top: 2rem;
-    }
   </style>
 </head>
 <body>
-  <h1 style="text-align:center;">آزمون شخصیت‌شناسی MBTI</h1>
-  <form id="quizForm">
+  <h1 style="text-align:center;">پرسش‌نامه شخصیت‌شناسی MBTI</h1>
+  <form id="mbtiForm">
+<div class="question">
+  <p>شما مرتب دوستان جدیدی پیدا می‌کنید.</p>
+  <div class="scale">
+    <label><input type="radio" name="q1" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q1" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q1" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q1" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q1" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q1" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q1" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>معمولاً بدون برنامه‌ریزی قبلی عمل می‌کنید.</p>
+  <div class="scale">
+    <label><input type="radio" name="q2" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q2" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q2" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q2" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q2" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q2" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q2" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>وقتی در جمع هستید، انرژی می‌گیرید.</p>
+  <div class="scale">
+    <label><input type="radio" name="q3" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q3" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q3" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q3" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q3" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q3" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q3" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>ترجیح می‌دهید تنها کار کنید تا در گروه.</p>
+  <div class="scale">
+    <label><input type="radio" name="q4" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q4" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q4" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q4" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q4" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q4" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q4" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>بیشتر بر اساس منطق تصمیم می‌گیرید تا احساس.</p>
+  <div class="scale">
+    <label><input type="radio" name="q5" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q5" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q5" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q5" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q5" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q5" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q5" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>نسبت به جزئیات حساس هستید.</p>
+  <div class="scale">
+    <label><input type="radio" name="q6" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q6" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q6" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q6" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q6" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q6" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q6" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>در موقعیت‌های اجتماعی، آغازگر گفت‌و‌گو هستید.</p>
+  <div class="scale">
+    <label><input type="radio" name="q7" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q7" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q7" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q7" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q7" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q7" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q7" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>به راحتی می‌توانید توجهتان را روی یک موضوع متمرکز نگه دارید.</p>
+  <div class="scale">
+    <label><input type="radio" name="q8" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q8" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q8" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q8" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q8" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q8" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q8" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>در مواجهه با مسئله، بیشتر به راه‌حل‌های خلاقانه فکر می‌کنید.</p>
+  <div class="scale">
+    <label><input type="radio" name="q9" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q9" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q9" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q9" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q9" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q9" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q9" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
+<div class="question">
+  <p>ترجیح می‌دهید همه چیز برنامه‌ریزی‌شده باشد تا خودجوش.</p>
+  <div class="scale">
+    <label><input type="radio" name="q10" value="-3"><br>کاملاً مخالفم</label>
+    <label><input type="radio" name="q10" value="-2"><br>مخالفم</label>
+    <label><input type="radio" name="q10" value="-1"><br>کمی مخالفم</label>
+    <label><input type="radio" name="q10" value="0"><br>خنثی</label>
+    <label><input type="radio" name="q10" value="1"><br>کمی موافقم</label>
+    <label><input type="radio" name="q10" value="2"><br>موافقم</label>
+    <label><input type="radio" name="q10" value="3"><br>کاملاً موافقم</label>
+  </div>
+</div>
 
-    <div class="question" id="q0">
-      <p>شما مرتب دوستان جدیدی پیدا می‌کنید.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q0" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q0" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q0" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q0" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q0" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q0" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q0" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q1">
-      <p>معمولاً بدون برنامه‌ریزی قبلی عمل می‌کنید.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q1" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q1" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q1" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q1" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q1" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q1" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q1" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q2">
-      <p>وقتی در جمع هستید، انرژی می‌گیرید.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q2" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q2" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q2" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q2" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q2" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q2" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q2" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q3">
-      <p>ترجیح می‌دهید تنها کار کنید تا در گروه.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q3" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q3" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q3" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q3" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q3" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q3" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q3" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q4">
-      <p>بیشتر بر اساس منطق تصمیم می‌گیرید تا احساس.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q4" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q4" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q4" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q4" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q4" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q4" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q4" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q5">
-      <p>نسبت به جزئیات حساس هستید.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q5" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q5" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q5" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q5" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q5" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q5" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q5" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q6">
-      <p>در موقعیت‌های اجتماعی، آغازگر گفتگو هستید.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q6" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q6" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q6" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q6" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q6" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q6" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q6" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q7">
-      <p>معمولاً کارها را دقیقه نود انجام می‌دهید.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q7" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q7" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q7" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q7" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q7" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q7" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q7" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q8">
-      <p>به احساسات دیگران توجه زیادی دارید.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q8" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q8" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q8" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q8" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q8" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q8" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q8" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div class="question" id="q9">
-      <p>از امتحان کردن تجربه‌های جدید لذت می‌برید.</p>
-      <div class="scale">
-    
-        <label>
-          <input type="radio" name="q9" value="1"><br>کاملاً مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q9" value="2"><br>مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q9" value="3"><br>کمی مخالفم
-        </label>
-        
-        <label>
-          <input type="radio" name="q9" value="4"><br>خنثی
-        </label>
-        
-        <label>
-          <input type="radio" name="q9" value="5"><br>کمی موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q9" value="6"><br>موافقم
-        </label>
-        
-        <label>
-          <input type="radio" name="q9" value="7"><br>کاملاً موافقم
-        </label>
-        </div></div>
-    <div style="text-align: center; margin-top: 40px;">
-        <button type="submit">مشاهده نتیجه</button>
-    </div>
+  <button type="submit">مشاهده نتیجه</button>
   </form>
-  <div class="result" id="result"></div>
-
-  <script>
-    document.getElementById("quizForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const formData = new FormData(this);
-      let E = 0, I = 0;
-
-      for (let [key, value] of formData.entries()) {
-        const v = parseInt(value);
-        if (key === "q0" || key === "q2" || key === "q6") E += v;
-        if (key === "q3" || key === "q5") I += v;
-      }
-
-      const type = (E >= I ? "E" : "I") + "NFJ";
-      const link = `https://designer-sho.com/blog/Style-Test/${type}`;
-      document.getElementById("result").innerHTML = `
-        تیپ شخصیتی شما: <strong>${type}</strong><br>
-        <a href="${link}" target="_blank">مشاهده مقاله سبک‌شناسی مربوط به این تیپ</a>
-      `;
-    });
-  </script>
 </body>
 </html>
