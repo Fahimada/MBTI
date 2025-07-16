@@ -3,64 +3,73 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>آزمون شخصیت‌شناسی MBTI</title>
+  <title>آزمون MBTI - کامل</title>
   <style>
     body {
       font-family: "Vazirmatn", sans-serif;
-      background-color: #f9f9f9;
+      background-color: #f0f0f0;
       margin: 0;
       padding: 20px;
       direction: rtl;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
     }
     form {
       max-width: 900px;
       margin: auto;
       background: white;
-      padding: 20px;
+      padding: 24px;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
     }
     .question {
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 10px;
     }
     .question p {
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .options {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 8px;
     }
     .options label {
       flex: 1;
       text-align: center;
+      margin: 4px;
+    }
+    #result {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+      background: #e0ffe0;
+      padding: 20px;
+      border-radius: 12px;
     }
     .submit-btn {
       display: block;
       margin: 40px auto 0;
+      padding: 12px 30px;
+      font-size: 18px;
       background-color: #6c4ee3;
       color: white;
       border: none;
-      padding: 12px 30px;
       border-radius: 8px;
-      font-size: 18px;
       cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>پرسش‌نامه شخصیت‌شناسی MBTI</h1>
+  <h1>پرسش‌نامه شخصیت‌شناسی MBTI (60 سوال)</h1>
   <form id="mbti-form">
 
     <div class="question">
-      <p>شما مرتب دوستان جدیدی پیدا می‌کنید.</p>
+      <p>1. شما مرتب دوستان جدیدی پیدا می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q0" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q0" value="-2" /> مخالفم</label>
@@ -73,7 +82,7 @@
     </div>
     
     <div class="question">
-      <p>معمولاً بدون برنامه‌ریزی قبلی عمل می‌کنید.</p>
+      <p>2. معمولاً بدون برنامه‌ریزی قبلی عمل می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q1" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q1" value="-2" /> مخالفم</label>
@@ -86,7 +95,7 @@
     </div>
     
     <div class="question">
-      <p>وقتی در جمع هستید، انرژی می‌گیرید.</p>
+      <p>3. وقتی در جمع هستید، انرژی می‌گیرید.</p>
       <div class="options">
         <label><input type="radio" name="q2" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q2" value="-2" /> مخالفم</label>
@@ -99,7 +108,7 @@
     </div>
     
     <div class="question">
-      <p>ترجیح می‌دهید تنها کار کنید تا در گروه.</p>
+      <p>4. ترجیح می‌دهید تنها کار کنید تا در گروه.</p>
       <div class="options">
         <label><input type="radio" name="q3" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q3" value="-2" /> مخالفم</label>
@@ -112,7 +121,7 @@
     </div>
     
     <div class="question">
-      <p>بیشتر بر اساس منطق تصمیم می‌گیرید تا احساس.</p>
+      <p>5. بیشتر بر اساس منطق تصمیم می‌گیرید تا احساس.</p>
       <div class="options">
         <label><input type="radio" name="q4" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q4" value="-2" /> مخالفم</label>
@@ -125,7 +134,7 @@
     </div>
     
     <div class="question">
-      <p>نسبت به جزئیات حساس هستید.</p>
+      <p>6. نسبت به جزئیات حساس هستید.</p>
       <div class="options">
         <label><input type="radio" name="q5" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q5" value="-2" /> مخالفم</label>
@@ -138,7 +147,7 @@
     </div>
     
     <div class="question">
-      <p>در موقعیت‌های اجتماعی، آغازگر گفتگو هستید.</p>
+      <p>7. در موقعیت‌های اجتماعی، آغازگر گفتگو هستید.</p>
       <div class="options">
         <label><input type="radio" name="q6" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q6" value="-2" /> مخالفم</label>
@@ -151,7 +160,7 @@
     </div>
     
     <div class="question">
-      <p>بیشتر اهل تخیل هستید تا واقع‌گرا.</p>
+      <p>8. بیشتر اهل تخیل هستید تا واقع‌گرا.</p>
       <div class="options">
         <label><input type="radio" name="q7" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q7" value="-2" /> مخالفم</label>
@@ -164,7 +173,7 @@
     </div>
     
     <div class="question">
-      <p>کارها را به تعویق می‌اندازید.</p>
+      <p>9. کارها را به تعویق می‌اندازید.</p>
       <div class="options">
         <label><input type="radio" name="q8" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q8" value="-2" /> مخالفم</label>
@@ -177,7 +186,7 @@
     </div>
     
     <div class="question">
-      <p>به احساسات دیگران توجه زیادی دارید.</p>
+      <p>10. به احساسات دیگران توجه زیادی دارید.</p>
       <div class="options">
         <label><input type="radio" name="q9" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q9" value="-2" /> مخالفم</label>
@@ -190,7 +199,7 @@
     </div>
     
     <div class="question">
-      <p>از موقعیت‌های رقابتی لذت می‌برید.</p>
+      <p>11. از موقعیت‌های رقابتی لذت می‌برید.</p>
       <div class="options">
         <label><input type="radio" name="q10" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q10" value="-2" /> مخالفم</label>
@@ -203,7 +212,7 @@
     </div>
     
     <div class="question">
-      <p>زود از نظر احساسی خسته می‌شوید.</p>
+      <p>12. زود از نظر احساسی خسته می‌شوید.</p>
       <div class="options">
         <label><input type="radio" name="q11" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q11" value="-2" /> مخالفم</label>
@@ -216,7 +225,7 @@
     </div>
     
     <div class="question">
-      <p>در برنامه‌ریزی بسیار دقیق هستید.</p>
+      <p>13. در برنامه‌ریزی بسیار دقیق هستید.</p>
       <div class="options">
         <label><input type="radio" name="q12" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q12" value="-2" /> مخالفم</label>
@@ -229,7 +238,7 @@
     </div>
     
     <div class="question">
-      <p>اغلب در رؤیاها و تخیلات خود غرق می‌شوید.</p>
+      <p>14. اغلب در رؤیاها و تخیلات خود غرق می‌شوید.</p>
       <div class="options">
         <label><input type="radio" name="q13" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q13" value="-2" /> مخالفم</label>
@@ -242,7 +251,7 @@
     </div>
     
     <div class="question">
-      <p>ترجیح می‌دهید با افراد در تعامل باشید تا کتاب‌ها.</p>
+      <p>15. ترجیح می‌دهید با افراد در تعامل باشید تا کتاب‌ها.</p>
       <div class="options">
         <label><input type="radio" name="q14" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q14" value="-2" /> مخالفم</label>
@@ -255,7 +264,7 @@
     </div>
     
     <div class="question">
-      <p>نسبت به سر و صدا حساس هستید.</p>
+      <p>16. نسبت به سر و صدا حساس هستید.</p>
       <div class="options">
         <label><input type="radio" name="q15" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q15" value="-2" /> مخالفم</label>
@@ -268,7 +277,7 @@
     </div>
     
     <div class="question">
-      <p>اغلب به حس درونی خود اعتماد می‌کنید.</p>
+      <p>17. اغلب به حس درونی خود اعتماد می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q16" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q16" value="-2" /> مخالفم</label>
@@ -281,7 +290,7 @@
     </div>
     
     <div class="question">
-      <p>در برنامه‌های غیرمنتظره احساس راحتی دارید.</p>
+      <p>18. در برنامه‌های غیرمنتظره احساس راحتی دارید.</p>
       <div class="options">
         <label><input type="radio" name="q17" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q17" value="-2" /> مخالفم</label>
@@ -294,7 +303,7 @@
     </div>
     
     <div class="question">
-      <p>در تصمیم‌گیری سریع هستید.</p>
+      <p>19. در تصمیم‌گیری سریع هستید.</p>
       <div class="options">
         <label><input type="radio" name="q18" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q18" value="-2" /> مخالفم</label>
@@ -307,7 +316,7 @@
     </div>
     
     <div class="question">
-      <p>ترجیح می‌دهید کارهایتان ساختار مشخص داشته باشند.</p>
+      <p>20. ترجیح می‌دهید کارهایتان ساختار مشخص داشته باشند.</p>
       <div class="options">
         <label><input type="radio" name="q19" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q19" value="-2" /> مخالفم</label>
@@ -320,7 +329,7 @@
     </div>
     
     <div class="question">
-      <p>تلاش می‌کنید از تعارضات دوری کنید.</p>
+      <p>21. تلاش می‌کنید از تعارضات دوری کنید.</p>
       <div class="options">
         <label><input type="radio" name="q20" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q20" value="-2" /> مخالفم</label>
@@ -333,7 +342,7 @@
     </div>
     
     <div class="question">
-      <p>شخصیت آرام و درون‌گرایی دارید.</p>
+      <p>22. شخصیت آرام و درون‌گرایی دارید.</p>
       <div class="options">
         <label><input type="radio" name="q21" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q21" value="-2" /> مخالفم</label>
@@ -346,7 +355,7 @@
     </div>
     
     <div class="question">
-      <p>در برابر فشارهای روانی مقاوم هستید.</p>
+      <p>23. در برابر فشارهای روانی مقاوم هستید.</p>
       <div class="options">
         <label><input type="radio" name="q22" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q22" value="-2" /> مخالفم</label>
@@ -359,7 +368,7 @@
     </div>
     
     <div class="question">
-      <p>سریعاً تصمیم‌گیری می‌کنید.</p>
+      <p>24. سریعاً تصمیم‌گیری می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q23" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q23" value="-2" /> مخالفم</label>
@@ -372,7 +381,7 @@
     </div>
     
     <div class="question">
-      <p>بیشتر شنونده‌اید تا گوینده.</p>
+      <p>25. بیشتر شنونده‌اید تا گوینده.</p>
       <div class="options">
         <label><input type="radio" name="q24" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q24" value="-2" /> مخالفم</label>
@@ -385,7 +394,7 @@
     </div>
     
     <div class="question">
-      <p>اغلب به دنبال یافتن الگو و معنا در اتفاقات هستید.</p>
+      <p>26. اغلب به دنبال یافتن الگو و معنا در اتفاقات هستید.</p>
       <div class="options">
         <label><input type="radio" name="q25" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q25" value="-2" /> مخالفم</label>
@@ -398,7 +407,7 @@
     </div>
     
     <div class="question">
-      <p>با تغییر شرایط سازگار می‌شوید.</p>
+      <p>27. با تغییر شرایط سازگار می‌شوید.</p>
       <div class="options">
         <label><input type="radio" name="q26" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q26" value="-2" /> مخالفم</label>
@@ -411,7 +420,7 @@
     </div>
     
     <div class="question">
-      <p>بر اساس ارزش‌های شخصی عمل می‌کنید.</p>
+      <p>28. بر اساس ارزش‌های شخصی عمل می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q27" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q27" value="-2" /> مخالفم</label>
@@ -424,7 +433,7 @@
     </div>
     
     <div class="question">
-      <p>قبل از صحبت کردن فکر می‌کنید.</p>
+      <p>29. قبل از صحبت کردن فکر می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q28" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q28" value="-2" /> مخالفم</label>
@@ -437,7 +446,7 @@
     </div>
     
     <div class="question">
-      <p>به دنبال کسب تجربه‌های جدید هستید.</p>
+      <p>30. به دنبال کسب تجربه‌های جدید هستید.</p>
       <div class="options">
         <label><input type="radio" name="q29" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q29" value="-2" /> مخالفم</label>
@@ -450,7 +459,7 @@
     </div>
     
     <div class="question">
-      <p>در زمان بحران منطقی عمل می‌کنید.</p>
+      <p>31. در زمان بحران منطقی عمل می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q30" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q30" value="-2" /> مخالفم</label>
@@ -463,7 +472,7 @@
     </div>
     
     <div class="question">
-      <p>اغلب در کار گروهی ابتکار عمل دارید.</p>
+      <p>32. اغلب در کار گروهی ابتکار عمل دارید.</p>
       <div class="options">
         <label><input type="radio" name="q31" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q31" value="-2" /> مخالفم</label>
@@ -476,7 +485,7 @@
     </div>
     
     <div class="question">
-      <p>از ساختارهای رسمی خوشتان نمی‌آید.</p>
+      <p>33. از ساختارهای رسمی خوشتان نمی‌آید.</p>
       <div class="options">
         <label><input type="radio" name="q32" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q32" value="-2" /> مخالفم</label>
@@ -489,7 +498,7 @@
     </div>
     
     <div class="question">
-      <p>معمولاً ایده‌های زیادی دارید.</p>
+      <p>34. معمولاً ایده‌های زیادی دارید.</p>
       <div class="options">
         <label><input type="radio" name="q33" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q33" value="-2" /> مخالفم</label>
@@ -502,7 +511,7 @@
     </div>
     
     <div class="question">
-      <p>احساساتتان را به راحتی بروز می‌دهید.</p>
+      <p>35. احساساتتان را به راحتی بروز می‌دهید.</p>
       <div class="options">
         <label><input type="radio" name="q34" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q34" value="-2" /> مخالفم</label>
@@ -515,7 +524,7 @@
     </div>
     
     <div class="question">
-      <p>در روابط شخصی، وفادار هستید.</p>
+      <p>36. در روابط شخصی، وفادار هستید.</p>
       <div class="options">
         <label><input type="radio" name="q35" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q35" value="-2" /> مخالفم</label>
@@ -528,7 +537,7 @@
     </div>
     
     <div class="question">
-      <p>نسبت به سرنوشت حساس هستید.</p>
+      <p>37. نسبت به سرنوشت حساس هستید.</p>
       <div class="options">
         <label><input type="radio" name="q36" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q36" value="-2" /> مخالفم</label>
@@ -541,7 +550,7 @@
     </div>
     
     <div class="question">
-      <p>به راحتی اشتباهات خود را می‌پذیرید.</p>
+      <p>38. به راحتی اشتباهات خود را می‌پذیرید.</p>
       <div class="options">
         <label><input type="radio" name="q37" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q37" value="-2" /> مخالفم</label>
@@ -554,7 +563,7 @@
     </div>
     
     <div class="question">
-      <p>با افراد جدید سریع ارتباط برقرار می‌کنید.</p>
+      <p>39. با افراد جدید سریع ارتباط برقرار می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q38" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q38" value="-2" /> مخالفم</label>
@@ -567,7 +576,7 @@
     </div>
     
     <div class="question">
-      <p>تمرکز زیادی روی اهداف بلندمدت دارید.</p>
+      <p>40. تمرکز زیادی روی اهداف بلندمدت دارید.</p>
       <div class="options">
         <label><input type="radio" name="q39" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q39" value="-2" /> مخالفم</label>
@@ -580,7 +589,7 @@
     </div>
     
     <div class="question">
-      <p>به ندرت از دیگران کمک می‌خواهید.</p>
+      <p>41. به ندرت از دیگران کمک می‌خواهید.</p>
       <div class="options">
         <label><input type="radio" name="q40" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q40" value="-2" /> مخالفم</label>
@@ -593,7 +602,7 @@
     </div>
     
     <div class="question">
-      <p>دوست دارید در موقعیت‌های خلاقانه باشید.</p>
+      <p>42. دوست دارید در موقعیت‌های خلاقانه باشید.</p>
       <div class="options">
         <label><input type="radio" name="q41" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q41" value="-2" /> مخالفم</label>
@@ -606,7 +615,7 @@
     </div>
     
     <div class="question">
-      <p>سخت‌گیر هستید.</p>
+      <p>43. سخت‌گیر هستید.</p>
       <div class="options">
         <label><input type="radio" name="q42" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q42" value="-2" /> مخالفم</label>
@@ -619,7 +628,7 @@
     </div>
     
     <div class="question">
-      <p>به شدت از بی‌نظمی ناراحت می‌شوید.</p>
+      <p>44. به شدت از بی‌نظمی ناراحت می‌شوید.</p>
       <div class="options">
         <label><input type="radio" name="q43" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q43" value="-2" /> مخالفم</label>
@@ -632,7 +641,7 @@
     </div>
     
     <div class="question">
-      <p>خلاقیت بالایی دارید.</p>
+      <p>45. خلاقیت بالایی دارید.</p>
       <div class="options">
         <label><input type="radio" name="q44" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q44" value="-2" /> مخالفم</label>
@@ -645,7 +654,7 @@
     </div>
     
     <div class="question">
-      <p>از تنهایی انرژی می‌گیرید.</p>
+      <p>46. از تنهایی انرژی می‌گیرید.</p>
       <div class="options">
         <label><input type="radio" name="q45" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q45" value="-2" /> مخالفم</label>
@@ -658,7 +667,7 @@
     </div>
     
     <div class="question">
-      <p>به جای عمل، بیشتر فکر می‌کنید.</p>
+      <p>47. به جای عمل، بیشتر فکر می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q46" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q46" value="-2" /> مخالفم</label>
@@ -671,7 +680,7 @@
     </div>
     
     <div class="question">
-      <p>در شرایط استرس‌زا سردرگم می‌شوید.</p>
+      <p>48. در شرایط استرس‌زا سردرگم می‌شوید.</p>
       <div class="options">
         <label><input type="radio" name="q47" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q47" value="-2" /> مخالفم</label>
@@ -684,7 +693,7 @@
     </div>
     
     <div class="question">
-      <p>با دیگران همدلی دارید.</p>
+      <p>49. با دیگران همدلی دارید.</p>
       <div class="options">
         <label><input type="radio" name="q48" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q48" value="-2" /> مخالفم</label>
@@ -697,7 +706,7 @@
     </div>
     
     <div class="question">
-      <p>از چالش‌های فکری لذت می‌برید.</p>
+      <p>50. از چالش‌های فکری لذت می‌برید.</p>
       <div class="options">
         <label><input type="radio" name="q49" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q49" value="-2" /> مخالفم</label>
@@ -710,7 +719,7 @@
     </div>
     
     <div class="question">
-      <p>به ندرت احساس بی‌حوصلگی می‌کنید.</p>
+      <p>51. به ندرت احساس بی‌حوصلگی می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q50" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q50" value="-2" /> مخالفم</label>
@@ -723,7 +732,7 @@
     </div>
     
     <div class="question">
-      <p>به شدت به برنامه‌ریزی پایبند هستید.</p>
+      <p>52. به شدت به برنامه‌ریزی پایبند هستید.</p>
       <div class="options">
         <label><input type="radio" name="q51" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q51" value="-2" /> مخالفم</label>
@@ -736,7 +745,7 @@
     </div>
     
     <div class="question">
-      <p>به راحتی دیگران را قانع می‌کنید.</p>
+      <p>53. به راحتی دیگران را قانع می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q52" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q52" value="-2" /> مخالفم</label>
@@ -749,7 +758,7 @@
     </div>
     
     <div class="question">
-      <p>نسبت به احساسات خود آگاهی دارید.</p>
+      <p>54. نسبت به احساسات خود آگاهی دارید.</p>
       <div class="options">
         <label><input type="radio" name="q53" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q53" value="-2" /> مخالفم</label>
@@ -762,7 +771,7 @@
     </div>
     
     <div class="question">
-      <p>از برنامه‌ریزی دقیق خسته نمی‌شوید.</p>
+      <p>55. از برنامه‌ریزی دقیق خسته نمی‌شوید.</p>
       <div class="options">
         <label><input type="radio" name="q54" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q54" value="-2" /> مخالفم</label>
@@ -775,7 +784,7 @@
     </div>
     
     <div class="question">
-      <p>در جمع‌های شلوغ احساس خوبی دارید.</p>
+      <p>56. در جمع‌های شلوغ احساس خوبی دارید.</p>
       <div class="options">
         <label><input type="radio" name="q55" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q55" value="-2" /> مخالفم</label>
@@ -788,7 +797,7 @@
     </div>
     
     <div class="question">
-      <p>از تصمیم‌های احساسی اجتناب می‌کنید.</p>
+      <p>57. از تصمیم‌های احساسی اجتناب می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q56" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q56" value="-2" /> مخالفم</label>
@@ -801,7 +810,7 @@
     </div>
     
     <div class="question">
-      <p>احساسات خود را عمیقاً درک می‌کنید.</p>
+      <p>58. احساسات خود را عمیقاً درک می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q57" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q57" value="-2" /> مخالفم</label>
@@ -814,7 +823,7 @@
     </div>
     
     <div class="question">
-      <p>اهل ماجراجویی هستید.</p>
+      <p>59. اهل ماجراجویی هستید.</p>
       <div class="options">
         <label><input type="radio" name="q58" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q58" value="-2" /> مخالفم</label>
@@ -827,7 +836,7 @@
     </div>
     
     <div class="question">
-      <p>از بحث‌های فکری استقبال می‌کنید.</p>
+      <p>60. از بحث‌های فکری استقبال می‌کنید.</p>
       <div class="options">
         <label><input type="radio" name="q59" value="-3" required /> کاملاً مخالفم</label>
         <label><input type="radio" name="q59" value="-2" /> مخالفم</label>
@@ -841,6 +850,34 @@
     
     <button type="submit" class="submit-btn">مشاهده نتیجه</button>
   </form>
+
+  <div id="result">
+    <h2>نتیجه آزمون شما: <span id="typeResult">در حال محاسبه...</span></h2>
+    <p><a id="bookLink" href="#" target="_blank">مشاهده کتابک اختصاصی شما</a></p>
+  </div>
+
   <script src="mbti_links.js"></script>
+  <script>
+    const form = document.getElementById('mbti-form');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Fake scoring logic for now (replace with real MBTI calc later)
+      const answers = new FormData(form);
+      let sum = 0;
+      for (let pair of answers.entries()) {
+        sum += parseInt(pair[1]);
+      }
+
+      let personality = "INTJ"; // Default for test
+      if (sum < 0) personality = "ISFP";
+      if (sum > 60) personality = "ENTP";
+      document.getElementById('typeResult').textContent = personality;
+      document.getElementById('bookLink').href = (typeof mbtiLinks !== 'undefined') ? mbtiLinks[personality] : "#";
+      document.getElementById('result').style.display = 'block';
+
+      window.scrollTo({ top: document.getElementById('result').offsetTop, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
