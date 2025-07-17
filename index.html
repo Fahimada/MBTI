@@ -2,94 +2,218 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>آزمون شخصیت‌شناسی MBTI</title>
-  <link href="https://cdn.fontcdn.ir/Font/Persian/IranYekan/IranYekan.css" rel="stylesheet">
   <style>
     body {
-      font-family: 'IranYekan', sans-serif;
-      direction: rtl;
-      background-color: #f6f6f6;
-      padding: 24px;
-      color: #333;
+      font-family: IranYekan, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
     }
-    .question-page { display: none; }
-    .question-page.active { display: block; }
-    .question { margin-bottom: 20px; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-    .navigation { text-align: center; margin-top: 30px; }
-    button { background: orange; border: none; padding: 10px 20px; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 5px; }
-    #result { background: white; margin-top: 30px; padding: 20px; border-radius: 8px; text-align: center; }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: right;
+      color: #222;
+    }
+    .question-box {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+    .question-text {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .options {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .option {
+      flex: 1 1 14%;
+      text-align: center;
+      font-size: 14px;
+    }
+    .option input {
+      margin-bottom: 5px;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: orange;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #fff;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    .result-box {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      margin-top: 40px;
+      display: none;
+    }
+    .result-box a {
+      display: inline-block;
+      margin-top: 20px;
+      color: orange;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <h1>آزمون شخصیت‌شناسی MBTI</h1>
-  <form id="mbtiForm">
-    <div id="pages"></div>
-    <div class="navigation">
-      <button type="button" onclick="prevPage()">صفحه قبل</button>
-      <button type="button" onclick="nextPage()">صفحه بعد</button>
-      <button type="submit" id="submitBtn" style="display:none">مشاهده نتیجه</button>
+  <div class="container">
+    <h1>آزمون شخصیت‌شناسی MBTI</h1>
+    <div id="question-container"></div>
+    <div class="nav-buttons">
+      <button id="prev-btn">صفحه قبل</button>
+      <button id="next-btn">صفحه بعد</button>
     </div>
-  </form>
-  <div id="result"></div>
+    <div class="nav-buttons">
+      <button id="submit-btn" style="display:none">مشاهده نتیجه</button>
+    </div>
+    <div id="result" class="result-box"></div>
+  </div>
 
   <script>
-    const questions = [
-      // 60 سوال دقیقاً اینجا قرار دارند (به‌صورت آرایه متنی که از قبل در فایل موجود است)
-    ];
+    const questions = [...Array(60).keys()].map(i => `سوال شماره ${i + 1}`);
+    const answers = Array(60).fill(null);
+    const scaleLabels = ["کاملاً مخالفم", "مخالفم", "کمی مخالفم", "خنثی", "کمی موافقم", "موافقم", "کاملاً موافقم"];
+    let currentPage = 0;
 
-    const links = {
-      "INTJ": "https://designer-sho.com/shop/types/P45616-INTJ.html",
-      "INTP": "https://designer-sho.com/shop/types/P45617-INTP.html",
-      "ENTJ": "https://designer-sho.com/shop/types/P45609-ENTJ.html",
-      "ENTP": "https://designer-sho.com/shop/types/P45610-ENTP.html",
-      "INFJ": "https://designer-sho.com/shop/types/P45612-INFJ.html",
-      "INFP": "https://designer-sho.com/shop/types/P45613-INFP.html",
-      "ENFJ": "https://designer-sho.com/shop/types/P45607-enfj.html",
-      "ENFP": "https://designer-sho.com/shop/types/P45608-ENFP.html",
-      "ISTJ": "https://designer-sho.com/shop/types/P45620-ISTJ.html",
-      "ISFJ": "https://designer-sho.com/shop/types/P45621-ISFJ.html",
-      "ESTJ": "https://designer-sho.com/shop/types/P45622-ESTJ.html",
-      "ESFJ": "https://designer-sho.com/shop/types/P45623-ESFJ.html",
-      "ISTP": "https://designer-sho.com/shop/types/P45619-ISTP.html",
-      "ISFP": "https://designer-sho.com/shop/types/P45625-ISFP.html",
-      "ESTP": "https://designer-sho.com/shop/types/P45626-ESTP.html",
-      "ESFP": "https://designer-sho.com/shop/types/P45624-ESFP.html"
+    function renderQuestions() {
+      const container = document.getElementById("question-container");
+      container.innerHTML = "";
+      const start = currentPage * 10;
+      const end = start + 10;
+      const currentQuestions = questions.slice(start, end);
+
+      currentQuestions.forEach((q, index) => {
+        const qIndex = start + index;
+        const div = document.createElement("div");
+        div.className = "question-box";
+        div.innerHTML = `<div class='question-text'>${qIndex + 1}. ${q}</div>`;
+
+        const optionsDiv = document.createElement("div");
+        optionsDiv.className = "options";
+        scaleLabels.forEach((label, i) => {
+          const opt = document.createElement("div");
+          opt.className = "option";
+          opt.innerHTML = `
+            <label>
+              <input type="radio" name="q${qIndex}" value="${i}" ${answers[qIndex] == i ? 'checked' : ''}>
+              ${label}
+            </label>
+          `;
+          optionsDiv.appendChild(opt);
+        });
+        div.appendChild(optionsDiv);
+        container.appendChild(div);
+      });
+
+      document.getElementById("prev-btn").disabled = currentPage === 0;
+      document.getElementById("next-btn").style.display = currentPage === 5 ? "none" : "inline-block";
+      document.getElementById("submit-btn").style.display = currentPage === 5 ? "inline-block" : "none";
+    }
+
+    function saveAnswers() {
+      const radios = document.querySelectorAll("input[type='radio']:checked");
+      radios.forEach(r => {
+        const qNum = parseInt(r.name.substring(1));
+        answers[qNum] = parseInt(r.value);
+      });
+    }
+
+    function validatePage() {
+      for (let i = currentPage * 10; i < currentPage * 10 + 10; i++) {
+        if (answers[i] === null) return false;
+      }
+      return true;
+    }
+
+    document.getElementById("next-btn").onclick = function () {
+      saveAnswers();
+      if (!validatePage()) {
+        alert("لطفاً به تمام سوالات این صفحه پاسخ دهید.");
+        return;
+      }
+      currentPage++;
+      renderQuestions();
+    };
+
+    document.getElementById("prev-btn").onclick = function () {
+      currentPage--;
+      renderQuestions();
+    };
+
+    document.getElementById("submit-btn").onclick = function () {
+      saveAnswers();
+      if (!validatePage()) {
+        alert("لطفاً به تمام سوالات این صفحه پاسخ دهید.");
+        return;
+      }
+      const result = calculateMBTI(answers);
+      showResult(result);
     };
 
     function calculateMBTI(answers) {
-      let dimensions = [0, 0, 0, 0]; // EI - SN - TF - JP
-
-      for (let i = 0; i < answers.length; i++) {
-        const val = parseInt(answers[i]);
-        const q = i + 1;
-        if ([1, 3, 6, 11, 15, 21, 30, 34, 36, 41, 51, 52, 56, 57, 60].includes(q)) dimensions[0] += val;
-        else if ([2, 4, 7, 8, 13, 22, 23, 31, 32, 42, 43, 45, 58].includes(q)) dimensions[1] += val;
-        else if ([5, 9, 10, 12, 14, 24, 27, 35, 38, 39, 44, 46, 50, 55].includes(q)) dimensions[2] += val;
-        else dimensions[3] += val;
-      }
-
-      const EI = dimensions[0] >= 0 ? "E" : "I";
-      const SN = dimensions[1] >= 0 ? "S" : "N";
-      const TF = dimensions[2] >= 0 ? "T" : "F";
-      const JP = dimensions[3] >= 0 ? "J" : "P";
-      return EI + SN + TF + JP;
+      let E = 0, I = 0, S = 0, N = 0, T = 0, F = 0, J = 0, P = 0;
+      answers.forEach((a, i) => {
+        if (i % 7 === 0 || i % 7 === 1) (i % 2 === 0 ? E += a : I += a);
+        else if (i % 7 === 2) (i % 2 === 0 ? S += a : N += a);
+        else if (i % 7 === 3) (i % 2 === 0 ? T += a : F += a);
+        else if (i % 7 === 4) (i % 2 === 0 ? J += a : P += a);
+      });
+      const type = `${E >= I ? 'E' : 'I'}${S >= N ? 'S' : 'N'}${T >= F ? 'T' : 'F'}${J >= P ? 'J' : 'P'}`;
+      return type;
     }
 
-    document.getElementById("mbtiForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const answers = [];
-      for (let i = 0; i < 60; i++) {
-        const val = document.querySelector(`input[name="q${i}"]:checked`);
-        answers.push(val ? parseInt(val.value) : 0);
-      }
-      const result = calculateMBTI(answers);
-      const link = links[result];
-      document.getElementById("result").innerHTML = `
-        <h2>تیپ شخصیتی شما: ${result}</h2>
-        <p><a href="${link}" target="_blank">مشاهده کتابک مخصوص این تیپ</a></p>
-      `;
-      document.getElementById("mbtiForm").style.display = "none";
-    });
+    function showResult(type) {
+      const resultBox = document.getElementById("result");
+      const linkMap = {
+        ENTJ: "P45609-ENTJ.html",
+        INTJ: "P45616-INTJ.html",
+        INTP: "P45617-INTP.html",
+        ENTP: "P45610-ENTP.html",
+        ENFJ: "P45607-enfj.html",
+        INFP: "P45613-INFP.html",
+        INFJ: "P45612-INFJ.html",
+        ENFP: "P45608-ENFP.html",
+        ISTJ: "P45620-ISTJ.html",
+        ISFJ: "P45621-ISFJ.html",
+        ESTJ: "P45622-ESTJ.html",
+        ESFJ: "P45623-ESFJ.html",
+        ISTP: "P45619-ISTP.html",
+        ISFP: "P45625-ISFP.html",
+        ESTP: "P45626-ESTP.html",
+        ESFP: "P45624-ESFP.html",
+      };
+      const link = linkMap[type] || "#";
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `<h2>نتیجه شما: ${type}</h2><a href='https://designer-sho.com/shop/types/${link}' target='_blank'>مشاهده کتابک مرتبط با تیپ ${type}</a>`;
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    document.addEventListener("DOMContentLoaded", renderQuestions);
   </script>
 </body>
 </html>
