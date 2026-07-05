@@ -1,0 +1,56 @@
+name: Build xdBot for GD 2.2081
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-windows:
+    name: Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout ported xdBot source
+        uses: actions/checkout@v4
+        with:
+          repository: Function-f-of-x/xdBot
+          ref: b6e1743d23b381b078c1c64a07f04d8f261ebf72
+
+      - name: Set target versions
+        shell: pwsh
+        run: |
+          $path = "mod.json"
+          $json = Get-Content $path -Raw | ConvertFrom-Json
+          $json.geode = "5.7.1"
+          $json.gd.win = "2.2081"
+          $json | ConvertTo-Json -Depth 100 | Set-Content $path -Encoding utf8
+          Get-Content $path
+
+      - name: Build Windows Geode mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          bindings: geode-sdk/bindings
+          bindings-ref: main
+          build-config: Release
+          export-pdb: false
+          combine: true
+
+  package:
+    name: Package .geode
+    runs-on: ubuntu-latest
+    needs: build-windows
+    steps:
+      - name: Combine build output
+        uses: geode-sdk/build-geode-mod/combine@main
+        id: build
+
+      - name: Upload installable mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: xdBot-GD-2.2081-Geode-5.7.1
+          path: ${{ steps.build.outputs.build-output }}
+          if-no-files-found: error
