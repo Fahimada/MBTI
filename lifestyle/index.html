@@ -29,7 +29,6 @@ h1{font-size:clamp(21px,4.2vw,30px);margin:11px 0 3px;line-height:1.55}.lead{fon
 .consent{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.95}.consent input{margin-top:6px;accent-color:var(--pink);width:17px;height:17px;flex:none}
 .alert{padding:10px 12px;border-radius:11px;background:#fff4ed;color:#744b35;font-size:12px;margin:10px 0;display:none}
 .alert.success{display:block;background:#ecf8f0;color:#285b3d}.alert.error{display:block;background:#fff0f2;color:#923c53}
-.statusbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}
 .noise{opacity:0;position:absolute;pointer-events:none;left:-100vw}
 @media(max-width:600px){.wrap{padding:10px 8px 38px}.top{padding:17px 14px;border-radius:15px}.panel{padding:15px 13px;border-radius:15px}.profile,.opts{grid-template-columns:1fr}.controls{flex-wrap:nowrap}.btn{padding:10px 12px;font-size:12px}.section-heading{font-size:18px}}
 @media print{.toolbar,.controls,.footnote,.submitcard{display:none}body{background:white}.top,.panel{box-shadow:none}.panel{border:0}.wrap{width:100%}}
@@ -38,7 +37,7 @@ h1{font-size:clamp(21px,4.2vw,30px);margin:11px 0 3px;line-height:1.55}.lead{fon
 <body>
 <div class="wrap" id="surveyRoot">
 <header class="top">
-  <div class="eyebrow">AFRAND • TYPOSPACE</div>
+  <div class="eyebrow">DESIGNER SHO • TYPOSPACE</div>
   <h1>پرسشنامه سبک زندگی و نیازهای سکونتی</h1>
   <p class="lead">بخش مکمل تست شخصیت‌شناسی | ۴۰ سؤال در ۱۲ فصل</p>
   <p class="notice">پاسخ‌ها را بر اساس زندگی واقعی خودتان انتخاب کنید، نه چیزی که دوست دارید روزی اتفاق بیفتد. می‌توانید سؤال‌های شخصی را بی‌پاسخ بگذارید. اطلاعات فقط برای شناخت نیازهای پروژه طراحی استفاده می‌شود.</p>
@@ -48,8 +47,7 @@ h1{font-size:clamp(21px,4.2vw,30px);margin:11px 0 3px;line-height:1.55}.lead{fon
     <label class="field"><span>نام یا شناسه پروژه (اختیاری)</span><input id="project" maxlength="100" placeholder="مثلاً پروژه تهران" /></label>
     <label class="field"><span>شخص پاسخ‌دهنده</span><input id="respondent" maxlength="100" placeholder="مثلاً مادر خانواده / خودم" /></label>
   </div>
-  <div class="statusbar"><span id="draftState">پیش‌نویس فقط در همین مرورگر ذخیره می‌شود</span> <button type="button" id="downloadDraft" class="btn soft">دریافت نسخه پشتیبان پاسخ‌ها</button></div>
-</header>
+  </header>
 <div class="toolbar" role="status"><div class="progress-meta"><span id="chapterCount">فصل ۱ از ۱۲</span><span id="answeredCount">۰ پاسخ از ۴۰ سؤال</span></div><div class="track"><div class="fill" id="fill"></div></div></div>
 <main id="questionsPanel" class="panel"></main>
 <div id="submitCard" class="submitcard" hidden>
@@ -66,7 +64,6 @@ h1{font-size:clamp(21px,4.2vw,30px);margin:11px 0 3px;line-height:1.55}.lead{fon
   <h2>پاسخ‌ها با موفقیت ارسال شد</h2>
   <p>از زمانی که برای تکمیل پرسشنامه گذاشتید سپاسگزاریم.</p>
   <p>کد پیگیری: <strong id="receipt" dir="ltr"></strong></p>
-  <button class="btn soft" type="button" id="successExport">دریافت نسخه پاسخ‌ها برای خودم</button>
 </div>
 <div class="controls" id="nav"><button class="btn soft" id="prev" type="button">فصل قبل</button><button class="btn primary" id="next" type="button">فصل بعد</button></div>
 <p class="footnote">TypoSpace | Lifestyle & Spatial Behavior Assessment</p>
@@ -85,9 +82,9 @@ if(!draft.requestId) draft.requestId=makeId();
 const $=id=>document.getElementById(id);
 function makeId(){return 'ts-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12)}
 function safe(s){return String(s||'')}
-function persist(){if(submitted)return;draft.name=$('clientName').value;draft.phone=$('clientPhone').value;draft.project=$('project').value;draft.respondent=$('respondent').value;try{localStorage.setItem(storageKey,JSON.stringify(draft));$('draftState').textContent='پیش‌نویس در این مرورگر ذخیره شده است'}catch(e){$('draftState').textContent='ذخیره خودکار در این مرورگر امکان‌پذیر نیست؛ نسخه پشتیبان دریافت کنید'}updateProgress()}
+function persist(){if(submitted)return;draft.name=$('clientName').value;draft.phone=$('clientPhone').value;draft.project=$('project').value;draft.respondent=$('respondent').value;try{localStorage.setItem(storageKey,JSON.stringify(draft))}catch(e){}updateProgress()}
 function init(){for(let [k,id] of [['name','clientName'],['phone','clientPhone'],['project','project'],['respondent','respondent']]){$(id).value=draft[k]||'';$(id).addEventListener('input',persist)}
-$('prev').addEventListener('click',()=>navigate(chapter-1));$('next').addEventListener('click',()=>navigate(chapter+1));$('submitBtn').addEventListener('click',submit);$('backToSurvey').addEventListener('click',()=>navigate(chapters.length-1));$('downloadDraft').addEventListener('click',exportAnswers);$('successExport').addEventListener('click',exportAnswers);renderChapter();updateProgress()}
+$('prev').addEventListener('click',()=>navigate(chapter-1));$('next').addEventListener('click',()=>navigate(chapter+1));$('submitBtn').addEventListener('click',submit);$('backToSurvey').addEventListener('click',()=>navigate(chapters.length-1));renderChapter();updateProgress()}
 function notify(msg){$('alert').className='alert error';$('alert').textContent=msg}
 function sectionIndexOf(q){return chapters.indexOf(q.section)}
 function renderChapter(){let isReview=chapter===chapters.length;$('questionsPanel').hidden=isReview;$('submitCard').hidden=!isReview;$('chapterCount').textContent=isReview?'مرور و ثبت نهایی':`فصل ${chapter+1} از ${chapters.length}`;$('prev').disabled=chapter===0;$('next').textContent=isReview?'بازبینی فصل آخر':(chapter===chapters.length-1?'مرور و ثبت':'فصل بعد');
@@ -106,7 +103,6 @@ let t=document.createElement('textarea');t.className='comment';t.rows=2;t.maxLen
 window.scrollTo({top:0,behavior:'smooth'});updateProgress()}
 function navigate(i){if(i===chapters.length&&chapter===chapters.length){navigate(chapters.length-1);return}chapter=Math.max(0,Math.min(chapters.length,i));renderChapter()}
 function updateProgress(){const count=Q.filter(q=>(draft.answers[q.number]||[]).length||(draft.notes[q.number]||'').trim()).length;$('answeredCount').textContent=`${count} پاسخ از ${Q.length} سؤال`;$('fill').style.width=`${Math.round(count/Q.length*100)}%`}
-function exportAnswers(){let lines=['تایپو اسپیس | نسخه پشتیبان پاسخ‌ها',`نام: ${$('clientName').value}`,`تلفن: ${$('clientPhone').value}`,`پروژه: ${$('project').value}`,`پاسخ‌دهنده: ${$('respondent').value}`,''];for(const q of Q){const a=draft.answers[q.number]||[];const n=draft.notes[q.number]||'';if(a.length||n){lines.push(`${q.number}. ${q.question}`,`پاسخ: ${a.join('، ')||'ثبت نشده'}`);if(n)lines.push(`توضیح: ${n}`);lines.push('')}}let blob=new Blob(['\uFEFF'+lines.join('\n')],{type:'text/plain;charset=utf-8'});let link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='TypoSpace-Lifestyle-Answers.txt';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(link.href),1500)}
 async function submit(){
  if(submitted)return;
  const name=$('clientName').value.trim();
@@ -149,7 +145,6 @@ async function submit(){
    submitted=true;
    $('receipt').textContent=draft.requestId;
    $('submitCard').hidden=true;$('questionsPanel').hidden=true;$('nav').hidden=true;$('successCard').hidden=false;
-   $('draftState').textContent='پاسخ‌ها ثبت شد.';
    try{localStorage.removeItem(storageKey)}catch(e){}
    window.scrollTo({top:0,behavior:'smooth'});
  }catch(err){
